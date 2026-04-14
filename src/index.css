@@ -15,7 +15,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 25% 12%;
 
-    /* Warm teal-green — matches YYC's palette */
     --primary: 168 52% 37%;
     --primary-foreground: 0 0% 100%;
 
@@ -103,6 +102,8 @@
   }
 }
 
+/* ── Entrance animations ──────────────────────────────────── */
+
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -114,6 +115,151 @@
   }
 }
 
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Typewriter cursor blink */
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+/* Reveal words one by one */
+@keyframes word-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle float for floating cards */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Marquee for trust strip */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Parallax utility class hint */
+@keyframes parallax-hint {
+  0% {
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 50% 30%;
+  }
+}
+
+/* ── Animation helper classes ─────────────────────────────── */
+
 .animate-fade-in {
   animation: fade-in 0.65s ease-out both;
+}
+.animate-fade-in-left {
+  animation: fade-in-left 0.65s ease-out both;
+}
+.animate-fade-in-right {
+  animation: fade-in-right 0.65s ease-out both;
+}
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* Scroll-reveal: elements start hidden; JS adds .reveal-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.reveal-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.reveal-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Smooth image parallax wrapper */
+.parallax-img {
+  will-change: transform;
+  transition: transform 0.05s linear;
 }

@@ -5,6 +5,7 @@ import ServicesSection from "@/components/ServicesSection";
 import HowItWorksSection from "@/components/Howitworkssection";
 import TrustSection from "@/components/Trustsection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FindUsSection from "@/components/Findussection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => (
     <HowItWorksSection />
     <TrustSection />
     <TestimonialsSection limit={3} />
+    <FindUsSection />
     <CtaBanner />
     <Footer />
   </div>
