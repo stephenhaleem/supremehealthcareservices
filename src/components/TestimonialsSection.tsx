@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   { name: "Margaret L.", location: "Toronto, ON", text: "ComfortCare has been a blessing for our family. The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind.", rating: 5 },
@@ -15,21 +15,33 @@ const TestimonialsSection = ({ limit }: { limit?: number }) => {
     <section className="py-20 section-gradient">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Testimonials</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Families Say</h2>
+          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3">Testimonials</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-3">
+            What Families <span className="italic font-normal">Say</span>
+          </h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {shown.map((t, i) => (
-            <div key={i} className="bg-card rounded-xl p-6 card-shadow">
-              <div className="flex gap-1 mb-3">
+            <div
+              key={i}
+              className="group bg-card rounded-2xl p-7 card-shadow hover:card-shadow-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden animate-fade-in"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <Quote size={40} className="absolute top-4 right-4 text-primary/10 group-hover:text-primary/20 transition-colors" />
+              <div className="flex gap-0.5 mb-4">
                 {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} size={16} className="fill-primary text-primary" />
+                  <Star key={j} size={14} className="fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">"{t.text}"</p>
-              <div>
-                <p className="font-semibold text-foreground text-sm">{t.name}</p>
-                <p className="text-xs text-muted-foreground">{t.location}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5 relative z-10">"{t.text}"</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-sm">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.location}</p>
+                </div>
               </div>
             </div>
           ))}
