@@ -1,54 +1,104 @@
-import {
-  Heart, Bath, UtensilsCrossed, Pill, Activity, Car,
-  Brain, Bed, UserCheck, HandHeart, Stethoscope, Home,
-} from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const services = [
-  { icon: Heart, title: "Personal Care", desc: "Bathing, grooming, dressing, and hygiene assistance with dignity and respect.", color: "from-[hsl(340,80%,55%)] to-[hsl(340,70%,65%)]" },
-  { icon: UtensilsCrossed, title: "Meal Preparation", desc: "Nutritious meals tailored to dietary needs and personal preferences.", color: "from-[hsl(30,85%,55%)] to-[hsl(40,80%,60%)]" },
-  { icon: Pill, title: "Medication Reminders", desc: "Timely reminders to ensure medications are taken correctly and safely.", color: "from-[hsl(260,70%,60%)] to-[hsl(280,60%,65%)]" },
-  { icon: Activity, title: "Vital Signs Monitoring", desc: "Regular monitoring of blood pressure, heart rate, and other vitals.", color: "from-[hsl(150,60%,45%)] to-[hsl(170,50%,50%)]" },
-  { icon: Brain, title: "Dementia & Alzheimer's Care", desc: "Specialised support for cognitive conditions with patience and expertise.", color: "from-[hsl(201,90%,45%)] to-[hsl(220,70%,55%)]" },
-  { icon: Bed, title: "Overnight & 24-Hour Care", desc: "Round-the-clock care for those who need continuous assistance.", color: "from-[hsl(240,60%,55%)] to-[hsl(260,50%,60%)]" },
-  { icon: Car, title: "Transportation & Errands", desc: "Accompaniment to appointments, shopping, and community activities.", color: "from-[hsl(180,60%,45%)] to-[hsl(190,50%,50%)]" },
-  { icon: HandHeart, title: "Companionship", desc: "Friendly conversation, activities, and emotional support to reduce isolation.", color: "from-[hsl(350,75%,55%)] to-[hsl(10,70%,60%)]" },
-  { icon: Home, title: "Light Housekeeping", desc: "Laundry, tidying, vacuuming, and maintaining a clean living environment.", color: "from-[hsl(45,80%,50%)] to-[hsl(55,70%,55%)]" },
-  { icon: Stethoscope, title: "Post-Surgery Recovery", desc: "Assistance with recovery routines, wound care, and mobility exercises.", color: "from-[hsl(200,80%,50%)] to-[hsl(210,70%,55%)]" },
-  { icon: Bath, title: "Respite Care", desc: "Temporary relief for family caregivers so they can rest and recharge.", color: "from-[hsl(290,60%,55%)] to-[hsl(310,50%,60%)]" },
-  { icon: UserCheck, title: "Fall Prevention", desc: "Home safety assessments and mobility assistance to prevent falls.", color: "from-[hsl(120,50%,45%)] to-[hsl(140,45%,50%)]" },
+  {
+    title: "Personal Care",
+    category: "Daily Assistance",
+    desc: "Bathing, grooming, dressing, and hygiene assistance with dignity and respect for your loved one.",
+    img: "https://images.unsplash.com/photo-1775642545871-ba7503fec638?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Meal Preparation",
+    category: "Nutrition & Wellness",
+    desc: "Nutritious, delicious meals crafted with care and tailored to dietary needs and preferences.",
+    img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80",
+  },
+  {
+    title: "Dementia & Alzheimer's Care",
+    category: "Specialized Care",
+    desc: "Specialized, patient support for cognitive conditions by trained professionals who truly understand.",
+    img: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Respite Care",
+    category: "Family Support",
+    desc: "Temporary relief for primary family caregivers — giving you the rest you need and deserve.",
+    img: "https://images.unsplash.com/photo-1765896387454-3c29c0473615?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "Companionship",
+    category: "Social & Emotional",
+    desc: "Friendly conversation, activities, and genuine emotional support to reduce isolation and loneliness.",
+    img: "https://images.unsplash.com/photo-1762955911769-d652ceaa94bb?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    title: "24-Hour / Overnight Care",
+    category: "Round-the-Clock",
+    desc: "Continuous professional care and supervision for those who need overnight or live-in assistance.",
+    img: "https://images.unsplash.com/photo-1740479050151-5d26c764403e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];
 
 const ServicesSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? services.slice(0, limit) : services;
+
   return (
-    <section className="section-gradient py-20">
+    <section className="py-20 section-gradient">
       <div className="container">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3">What We Offer</p>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-3">
-            Our Home Care <span className="italic font-normal">Services</span>
-          </h2>
-          <p className="font-sans text-sm text-muted-foreground max-w-lg mx-auto">Comprehensive care plans designed around your unique needs, delivered by certified healthcare aides.</p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <p className="text-center text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
+          WHAT WE OFFER
+        </p>
+        <h2 className="text-center text-3xl md:text-4xl font-bold text-foreground mb-3">
+          Trustworthy & Compassionate{" "}
+          <span className="italic font-normal">Care Solutions</span>
+        </h2>
+        <p className="text-center text-sm text-muted-foreground max-w-lg mx-auto mb-12">
+          Comprehensive care plans designed around your unique needs, delivered
+          by certified healthcare aides.
+        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {shown.map((s, i) => (
             <div
               key={s.title}
-              className="group bg-card rounded-2xl p-6 card-shadow hover:card-shadow-hover hover:-translate-y-1 transition-all duration-300 animate-fade-in"
+              className="group bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover hover:-translate-y-1 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center mb-4 text-primary-foreground group-hover:scale-110 transition-transform duration-300`}>
-                <s.icon size={22} />
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={s.img}
+                  alt={s.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <span className="absolute top-3 left-3 bg-primary/90 text-primary-foreground text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                  {s.category}
+                </span>
               </div>
-              <h3 className="font-serif text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-              <p className="font-sans text-xs text-muted-foreground leading-relaxed">{s.desc}</p>
+
+              {/* Content */}
+              <div className="p-5">
+                <h3 className="font-bold text-base text-foreground mb-2">
+                  {s.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                  {s.desc}
+                </p>
+              </div>
             </div>
           ))}
         </div>
+
         {limit && (
           <div className="text-center mt-10">
-            <Link to="/services" className="text-primary font-medium hover:underline text-sm">View All Services →</Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 text-primary font-semibold text-sm border border-primary rounded-full px-6 py-2.5 hover:bg-primary hover:text-white transition-all"
+            >
+              View All Services <ArrowRight size={15} />
+            </Link>
           </div>
         )}
       </div>
