@@ -88,7 +88,8 @@ const FindUsSection = () => {
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
             With care hubs across the province, we're always close to home.
-            Select a location below to find your nearest SupremeHome office.
+            Select a location below to find your nearest Rooted With You At Home
+            Services office.
           </p>
         </div>
 

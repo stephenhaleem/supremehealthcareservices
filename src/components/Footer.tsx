@@ -24,7 +24,7 @@ const Footer = () => (
                 className="font-bold text-white text-base"
                 style={{ fontFamily: "Lora, serif" }}
               >
-                SupremeHome
+                Rooted With You At Home Services
               </div>
               <div className="text-[10px] opacity-60 uppercase tracking-widest">
                 Care Services

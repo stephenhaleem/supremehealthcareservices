@@ -33,7 +33,6 @@ const Navbar = () => {
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "shadow-lg" : ""}`}
       >
-        {/* Top utility bar — collapses on scroll */}
         <div
           className={`bg-primary text-primary-foreground overflow-hidden transition-all duration-300 ${
             scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
@@ -63,10 +62,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Main nav */}
         <nav className="bg-white/95 backdrop-blur-md border-b border-border/40">
           <div className="container flex items-center justify-between h-[72px]">
-            {/* Logo */}
             <Link
               to="/"
               className="flex items-center gap-3 group"
@@ -81,15 +78,14 @@ const Navbar = () => {
                   className="font-bold text-foreground text-lg"
                   style={{ fontFamily: "Lora, serif" }}
                 >
-                  SupremeHome
+                  Rooted With You
                 </div>
                 <div className="text-[9px] text-muted-foreground uppercase tracking-[0.2em] -mt-0.5">
-                  Care Services
+                  At Home Services
                 </div>
               </div>
             </Link>
 
-            {/* Desktop links */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((l) => (
                 <Link
@@ -109,7 +105,6 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
               <a
                 href="tel:18005550273"
@@ -185,7 +180,7 @@ const Navbar = () => {
                 className="font-bold text-foreground text-base"
                 style={{ fontFamily: "Lora, serif" }}
               >
-                SupremeHome
+                Rooted With You At Home Services
               </div>
               <div className="text-[9px] text-muted-foreground uppercase tracking-[0.18em]">
                 Care Services

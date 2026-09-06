@@ -4,7 +4,7 @@ const testimonials = [
   {
     name: "Margaret L.",
     location: "Toronto, ON",
-    text: "SupremeHome care services has been a blessing for our family. The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind.",
+    text: "Rooted With You At Home Services care services has been a blessing for our family. The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind.",
     rating: 5,
     initial: "M",
   },

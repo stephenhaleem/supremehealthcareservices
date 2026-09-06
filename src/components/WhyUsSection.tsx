@@ -37,9 +37,9 @@ const WhyUsSection = () => (
         <span className="italic font-normal">with Integrity</span>
       </h2>
       <p className="text-center text-sm text-muted-foreground max-w-xl mx-auto mb-14">
-        At SupremeHome care services, we promise to deliver compassionate,
-        tailored care that promotes independence, dignity, and comfort — in the
-        place where healing happens most: home.
+        At Rooted With You At Home Services care services, we promise to deliver
+        compassionate, tailored care that promotes independence, dignity, and
+        comfort — in the place where healing happens most: home.
       </p>
 
       {/* Split layout: image left + points right */}

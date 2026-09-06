@@ -38,10 +38,9 @@ const HeroSection = () => {
           height: "120%",
         }}
       />
-      {/* Overlay */}
+
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(168,60%,18%,0.93)] via-[hsl(168,50%,25%,0.8)] to-[hsl(168,40%,30%,0.45)]" />
 
-      {/* Animated grain overlay for texture */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
@@ -60,8 +59,10 @@ const HeroSection = () => {
             Licensed · Background-Checked · CPR Certified
           </div>
 
-          {/* Main headline — letter stagger via word groups */}
-          <h1 className="mb-5" aria-label="SupremeHome Care Services">
+          <h1
+            className="mb-5"
+            aria-label="Rooted With You At Home Services Care Services"
+          >
             <span
               className={`block text-5xl md:text-7xl font-bold leading-[1.0] transition-all duration-700 delay-100 ${
                 visible
@@ -70,8 +71,8 @@ const HeroSection = () => {
               }`}
               style={{ fontFamily: "Lora, serif" }}
             >
-              Supreme
-              <span className="text-green-300">Home</span>
+              Rooted With
+              <span className="text-green-300">You</span>
             </span>
             <span
               className={`block italic font-normal text-3xl md:text-5xl opacity-90 mt-1 transition-all duration-700 delay-200 ${
@@ -81,18 +82,12 @@ const HeroSection = () => {
               }`}
               style={{ fontFamily: "Lora, serif" }}
             >
-              Care Services
+              at Home Services
             </span>
           </h1>
 
           {/* Tagline — fade up */}
-          <p
-            className={`text-base md:text-lg font-light opacity-85 mb-2 italic transition-all duration-700 delay-300 ${
-              visible ? "opacity-85 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          >
-            Caring for you, right at home
-          </p>
+
           <p
             className={`text-sm md:text-base font-light opacity-80 mb-10 max-w-xl leading-relaxed transition-all duration-700 delay-[380ms] ${
               visible ? "opacity-80 translate-y-0" : "opacity-0 translate-y-6"
