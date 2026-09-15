@@ -1,116 +1,30 @@
-import { Star, Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 const testimonials = [
-  {
-    name: "Margaret L.",
-    location: "Toronto, ON",
-    text: "Rooted With You At Home Services care services has been a blessing for our family. The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind.",
-    rating: 5,
-    initial: "M",
-  },
-  {
-    name: "James R.",
-    location: "Vancouver, BC",
-    text: "After my hip surgery, the recovery care I received was outstanding. My caregiver helped me get back on my feet safely and with confidence.",
-    rating: 5,
-    initial: "J",
-  },
-  {
-    name: "Susan T.",
-    location: "Calgary, AB",
-    text: "The companionship care for my father has made such a difference. He looks forward to his visits and his mood has improved so much. Highly recommend!",
-    rating: 5,
-    initial: "S",
-  },
-  {
-    name: "David K.",
-    location: "Ottawa, ON",
-    text: "Professional, punctual, and genuinely caring. The team went above and beyond during a very difficult time for our family. We are eternally grateful.",
-    rating: 5,
-    initial: "D",
-  },
-  {
-    name: "Linda M.",
-    location: "Montreal, QC",
-    text: "We tried several home care agencies before finding ComfortCare. The difference is night and day — truly exceptional caregivers who treat my mom like family.",
-    rating: 5,
-    initial: "L",
-  },
-  {
-    name: "Robert P.",
-    location: "Winnipeg, MB",
-    text: "The overnight care service gave us the rest we desperately needed as family caregivers. Knowing Dad is safe lets us sleep peacefully.",
-    rating: 5,
-    initial: "R",
-  },
+  { name: "Margaret L.", location: "Calgary, AB", text: "The aide who looks after my mother is incredibly kind and professional. We finally have peace of mind." },
+  { name: "James R.", location: "Edmonton, AB", text: "After my hip surgery, the recovery care was outstanding. My caregiver helped me regain confidence safely." },
+  { name: "Susan T.", location: "Red Deer, AB", text: "The companionship care has made such a difference. Dad looks forward to every visit and feels like himself again." },
+  { name: "David K.", location: "Calgary, AB", text: "Professional, punctual, and genuinely caring. The team went above and beyond for our family." },
+  { name: "Linda M.", location: "Airdrie, AB", text: "The difference is remarkable—exceptional caregivers who treat my mom with dignity and patience." },
+  { name: "Robert P.", location: "Lethbridge, AB", text: "Overnight care gave our family the rest we desperately needed. Knowing Dad is safe lets us sleep peacefully." },
 ];
 
 const TestimonialsSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? testimonials.slice(0, limit) : testimonials;
-
   return (
-    <section className="py-20 bg-white">
+    <section className="border-b border-border bg-background py-24">
       <div className="container">
-        <p className="text-center text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
-          TESTIMONIALS
-        </p>
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-foreground mb-3">
-          What Families <span className="italic font-normal">Say About Us</span>
-        </h2>
-
-        {/* Overall rating bar */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <div className="flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                size={16}
-                className="fill-amber-400 text-amber-400"
-              />
-            ))}
-          </div>
-          <span className="text-sm font-bold text-foreground">Excellent</span>
-          <span className="text-sm text-muted-foreground">
-            — Based on 100+ Google reviews
-          </span>
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div><p className="section-label">Family stories</p><h2 className="section-title mt-5">Trusted in the moments that matter.</h2></div>
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground"><span className="flex gap-1 text-primary">{[1,2,3,4,5].map((n) => <Star key={n} size={14} fill="currentColor" />)}</span> 5.0 average</div>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {shown.map((t, i) => (
-            <div
-              key={i}
-              className="group bg-white border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow duration-300 animate-fade-in relative"
-              style={{ animationDelay: `${i * 70}ms` }}
-            >
-              <Quote
-                size={32}
-                className="absolute top-4 right-4 text-primary/8 group-hover:text-primary/15 transition-colors"
-              />
-
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(t.rating)].map((_, j) => (
-                  <Star
-                    key={j}
-                    size={13}
-                    className="fill-amber-400 text-amber-400"
-                  />
-                ))}
-              </div>
-
-              <p className="text-sm text-foreground/80 leading-relaxed mb-5 relative z-10">
-                "{t.text}"
-              </p>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm shrink-0">
-                  {t.initial}
-                </div>
-                <div>
-                  <p className="font-bold text-sm text-foreground">{t.name}</p>
-                </div>
-              </div>
-            </div>
+        <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {shown.map((item) => (
+            <article key={item.name} className="group min-h-[280px] bg-background p-8 transition-colors hover:bg-secondary/40">
+              <Quote size={28} strokeWidth={1.2} className="text-primary" />
+              <blockquote className="mt-10 text-lg leading-7 text-foreground">“{item.text}”</blockquote>
+              <div className="mt-8 border-t border-border pt-5"><p className="text-xs font-bold uppercase tracking-[0.1em] text-foreground">{item.name}</p><p className="mt-1 text-xs text-muted-foreground">{item.location}</p></div>
+            </article>
           ))}
         </div>
       </div>
