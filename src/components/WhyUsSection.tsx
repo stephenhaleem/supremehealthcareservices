@@ -10,11 +10,11 @@ const points = [
 ];
 
 const WhyUsSection = () => (
-  <section className="border-b border-border bg-background py-24">
+  <section className="animate-section border-b border-border bg-secondary/35 py-32">
     <div className="container grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
       <div className="lg:sticky lg:top-28 lg:self-start">
         <p className="section-label">Our standard</p>
-        <h2 className="section-title mt-5">Care that earns your trust.</h2>
+        <h2 className="section-title mt-5 md:text-5xl"><span className="animate-word">Care that earns</span> <span className="animate-word text-primary [animation-delay:120ms]">your trust.</span></h2>
         <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">Thoughtful support starts with excellent people. Our care team combines clinical readiness with genuine warmth, patience, and respect.</p>
         <Button asChild variant="outline" className="mt-8 rounded-none">
           <Link to="/about">Meet our approach</Link>
@@ -22,7 +22,7 @@ const WhyUsSection = () => (
       </div>
       <div className="grid gap-px border border-border bg-border sm:grid-cols-2">
         {points.map((point, index) => (
-          <article key={point.title} className="group min-h-[250px] bg-background p-8 transition-colors hover:bg-secondary/50 md:p-10">
+          <article key={point.title} className="motion-hover reveal-card group min-h-[250px] bg-background p-8 transition-colors hover:bg-secondary/50 md:p-10">
             <div className="flex items-start justify-between">
               <point.icon size={26} strokeWidth={1.4} className="text-primary" />
               <span className="text-[10px] font-bold text-muted-foreground">0{index + 1}</span>

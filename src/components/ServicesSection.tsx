@@ -13,18 +13,18 @@ const services = [
 const ServicesSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? services.slice(0, limit) : services;
   return (
-    <section className="border-b border-border bg-secondary/40 py-24">
+    <section className="animate-section theme-wash border-b border-border py-24">
       <div className="container">
         <div className="mb-12 flex flex-col justify-between gap-7 md:flex-row md:items-end">
           <div>
             <p className="section-label">Care solutions</p>
-            <h2 className="section-title mt-5">Support for every day.</h2>
+            <h2 className="section-title mt-5"><span className="animate-word">Support for</span> <span className="animate-word text-primary [animation-delay:120ms]">every day.</span></h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-muted-foreground">A complete range of in-home services, thoughtfully tailored to changing needs and personal routines.</p>
         </div>
         <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {shown.map((service, index) => (
-            <article key={service.title} className="group bg-background">
+            <article key={service.title} className={`motion-hover reveal-card ${index % 2 === 0 ? "reveal-from-left" : "reveal-from-right"} group bg-background`}>
               <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                 <img src={service.img} alt={service.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <span className="absolute left-4 top-4 bg-background px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-foreground">{service.category}</span>

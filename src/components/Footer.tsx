@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { HeartPulse } from "lucide-react";
 
 const Footer = () => (
-  <footer className="overflow-hidden bg-foreground text-background">
+  <footer className="animate-section overflow-hidden bg-primary text-primary-foreground">
     <div className="container pb-8 pt-20">
       <div className="grid gap-12 border-b border-background/15 pb-20 sm:grid-cols-2 lg:grid-cols-[1.3fr_.8fr_.8fr_1fr]">
         <div>
@@ -24,7 +24,22 @@ const Footer = () => (
       </div>
 
       <div className="py-9">
-        <p className="whitespace-nowrap text-center text-[clamp(2.6rem,9.6vw,9rem)] font-bold leading-none text-background">ROOTED WITH YOU</p>
+        <p
+          aria-label="Rooted With You"
+          className="typing-word whitespace-nowrap text-center text-[clamp(2.3rem,8.8vw,9rem)] font-bold leading-none text-background"
+        >
+          <span aria-hidden="true">
+            {"ROOTED WITH YOU".split("").map((character, index) => (
+              <span
+                key={`${character}-${index}`}
+                className="typing-character"
+                style={{ animationDelay: `${index * 75}ms` }}
+              >
+                {character === " " ? "\u00a0" : character}
+              </span>
+            ))}
+          </span>
+        </p>
       </div>
 
       <div className="flex flex-col justify-between gap-4 border-t border-background/15 pt-6 text-[9px] font-semibold uppercase tracking-[0.12em] text-background/45 sm:flex-row">

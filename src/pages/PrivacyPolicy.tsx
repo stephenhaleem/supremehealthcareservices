@@ -4,10 +4,11 @@ import Footer from "@/components/Footer";
 const PrivacyPolicy = () => (
   <div className="min-h-screen">
     <Navbar />
-    <section className="hero-gradient text-primary-foreground py-16">
-      <div className="container text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
-        <p className="text-lg opacity-90">Last updated: April 2026</p>
+    <section className="animate-section border-b border-border bg-background py-20">
+      <div className="container max-w-2xl">
+        <p className="section-label">Legal</p>
+        <h1 className="section-title mt-5">Privacy Policy</h1>
+        <p className="mt-4 text-sm text-muted-foreground">Last updated: April 2026</p>
       </div>
     </section>
     <section className="py-20 bg-card">
@@ -25,13 +26,13 @@ const PrivacyPolicy = () => (
         <p className="text-muted-foreground mb-6">We do not sell your personal information. We may share data with assigned caregivers (as necessary for service delivery), healthcare partners (with your consent), and legal authorities when required by law.</p>
 
         <h2 className="text-2xl font-bold text-foreground mb-4">5. Your Rights</h2>
-        <p className="text-muted-foreground mb-6">Under PIPEDA, you have the right to access, correct, or delete your personal information. You may withdraw consent at any time by contacting us at privacy@comfortcare.ca.</p>
+        <p className="text-muted-foreground mb-6">Under PIPEDA, you have the right to access, correct, or delete your personal information. You may withdraw consent at any time by contacting us at privacy@rootedwithyou.ca.</p>
 
         <h2 className="text-2xl font-bold text-foreground mb-4">6. Cookies</h2>
         <p className="text-muted-foreground mb-6">Our website uses cookies to enhance your browsing experience. You can manage cookie preferences through your browser settings.</p>
 
         <h2 className="text-2xl font-bold text-foreground mb-4">7. Contact Us</h2>
-        <p className="text-muted-foreground">If you have questions about this Privacy Policy, contact our Privacy Officer at privacy@comfortcare.ca or call 1-800-555-CARE.</p>
+        <p className="text-muted-foreground">If you have questions about this Privacy Policy, contact our Privacy Officer at privacy@rootedwithyou.ca or call 1-800-555-CARE.</p>
       </div>
     </section>
     <Footer />

@@ -2,52 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap");
-
 @layer base {
   :root {
-    --background: 40 30% 97%;
-    --foreground: 210 25% 12%;
+    --background: 72 100% 94%;
+    --foreground: 158 48% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 25% 12%;
+    --card-foreground: 158 48% 14%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 210 25% 12%;
 
-    --primary: 168 52% 37%;
+    --primary: 158 48% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 168 35% 92%;
-    --secondary-foreground: 168 52% 22%;
+    --secondary: 72 100% 89%;
+    --secondary-foreground: 158 48% 18%;
 
-    --muted: 40 18% 93%;
-    --muted-foreground: 210 12% 42%;
+    --muted: 72 45% 90%;
+    --muted-foreground: 158 18% 38%;
 
-    --accent: 168 40% 88%;
-    --accent-foreground: 168 52% 20%;
+    --accent: 72 100% 86%;
+    --accent-foreground: 158 48% 18%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 40 18% 87%;
-    --input: 40 18% 87%;
-    --ring: 168 52% 37%;
+    --border: 158 20% 78%;
+    --input: 158 20% 78%;
+    --ring: 158 48% 25%;
 
     --radius: 0.5rem;
 
-    --hero-gradient: linear-gradient(
-      150deg,
-      hsl(168 60% 22% / 0.88) 0%,
-      hsl(168 45% 38% / 0.72) 100%
-    );
+    --hero-gradient: linear-gradient(150deg, hsl(158 48% 20%), hsl(158 48% 30%));
     --section-gradient: linear-gradient(
       180deg,
-      hsl(40 30% 97%),
-      hsl(168 20% 95%)
+      hsl(72 100% 94%),
+      hsl(72 45% 90%)
     );
-    --card-shadow: 0 2px 16px -2px hsl(168 52% 37% / 0.1);
-    --card-shadow-hover: 0 10px 36px -4px hsl(168 52% 37% / 0.22);
+    --card-shadow: 0 2px 16px -2px hsl(158 48% 25% / 0.12);
+    --card-shadow-hover: 0 14px 36px -4px hsl(158 48% 25% / 0.24);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -67,14 +61,18 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "DM Sans", sans-serif;
+    font-family: "Mandioca", "Trebuchet MS", sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: "Lora", serif;
+    font-family: "Aether", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.035em;
   }
 }
 
@@ -84,6 +82,11 @@
   }
   .section-gradient {
     background: var(--section-gradient);
+  }
+  .theme-wash {
+    background:
+      radial-gradient(circle at 12% 18%, hsl(168 52% 37% / 0.08), transparent 32%),
+      linear-gradient(180deg, hsl(var(--background)), hsl(168 20% 95% / 0.7));
   }
   .card-shadow {
     box-shadow: var(--card-shadow);
@@ -95,10 +98,19 @@
     @apply transition-transform duration-200 hover:scale-105;
   }
   .font-sans {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Mandioca", "Trebuchet MS", sans-serif;
   }
   .font-serif {
-    font-family: "Lora", serif;
+    font-family: "Aether", Georgia, serif;
+  }
+  .section-label {
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-primary;
+  }
+  .section-title {
+    @apply text-3xl font-semibold leading-tight text-foreground md:text-4xl;
+  }
+  .footer-label {
+    @apply text-[10px] font-bold uppercase tracking-[0.16em] text-background/70;
   }
 }
 
@@ -171,6 +183,24 @@
   }
 }
 
+@keyframes blur-type {
+  0% {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(8px);
+  }
+  60% {
+    opacity: 0.7;
+    filter: blur(3px);
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
 /* Subtle float for floating cards */
 @keyframes float {
   0%,
@@ -222,6 +252,85 @@
 .animate-marquee {
   animation: marquee 28s linear infinite;
 }
+.animate-section {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.animate-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation-play-state: paused;
+}
+.animate-section.is-visible .animate-word,
+.animate-section.is-visible .animate-fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation-play-state: running;
+}
+.typing-character {
+  display: inline-block;
+  opacity: 0;
+  animation: blur-type 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-play-state: paused;
+}
+.animate-section.is-visible .typing-character {
+  animation-play-state: running;
+}
+.animate-section .animate-fade-in {
+  animation-play-state: paused;
+}
+.animate-section.is-visible .motion-hover {
+  animation: fade-in-scale 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-card {
+  opacity: 0;
+  transform: translateY(34px);
+}
+.animate-section.is-visible .reveal-card {
+  animation: fade-in-scale 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-section.is-visible .reveal-from-left {
+  animation-name: fade-in-left;
+}
+.animate-section.is-visible .reveal-from-right {
+  animation-name: fade-in-right;
+}
+.animate-section.is-visible .motion-hover:nth-child(2) {
+  animation-delay: 100ms;
+}
+.animate-section.is-visible .motion-hover:nth-child(3) {
+  animation-delay: 180ms;
+}
+.animate-section.is-visible .motion-hover:nth-child(4) {
+  animation-delay: 260ms;
+}
+.animate-section.is-visible .motion-hover:nth-child(5) {
+  animation-delay: 340ms;
+}
+.animate-section.is-visible .motion-hover:nth-child(6) {
+  animation-delay: 420ms;
+}
+.motion-hover {
+  transition:
+    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 300ms ease,
+    background-color 300ms ease;
+}
+.motion-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
 
 /* Scroll-reveal: elements start hidden; JS adds .reveal-visible */
 .reveal {
@@ -262,4 +371,15 @@
 .parallax-img {
   will-change: transform;
   transition: transform 0.05s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

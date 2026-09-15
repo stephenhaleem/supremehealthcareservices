@@ -6,10 +6,22 @@ import Footer from "@/components/Footer";
 const ServicesPage = () => (
   <div className="min-h-screen">
     <Navbar />
-    <section className="hero-gradient text-primary-foreground py-16">
-      <div className="container text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-        <p className="text-lg opacity-90 max-w-2xl mx-auto">Comprehensive home care solutions tailored to every need.</p>
+    <section className="animate-section border-b border-border bg-background py-20">
+      <div className="container max-w-2xl">
+        <p className="section-label">Our Services</p>
+        <h1 className="mt-5 text-4xl font-semibold leading-tight text-foreground md:text-6xl">
+          What We Offer at Rooted With You
+        </h1>
+        <p className="mt-5 text-sm leading-6 text-muted-foreground">
+          We offer a wide range of home care services to support you and your
+          loved ones. Our team of compassionate caregivers is dedicated to
+          providing personalized care that meets your unique needs.
+        </p>
+        <p className="mt-5 text-sm leading-6 text-muted-foreground">
+          From companionship and personal care to specialized support for
+          chronic conditions, we are here to help you maintain independence and
+          improve quality of life.
+        </p>
       </div>
     </section>
     <ServicesSection />

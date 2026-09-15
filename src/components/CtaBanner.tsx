@@ -3,11 +3,11 @@ import { ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CtaBanner = () => (
-  <section className="bg-primary py-20 text-primary-foreground">
+  <section className="animate-section bg-primary py-20 text-primary-foreground">
     <div className="container grid items-end gap-10 md:grid-cols-[1fr_auto]">
       <div>
         <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-70">Start with a conversation</p>
-        <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight md:text-6xl">Let’s build the right care plan, together.</h2>
+        <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight md:text-6xl"><span className="animate-word">Let’s build the right</span> <span className="animate-word text-secondary [animation-delay:120ms]">care plan, together.</span></h2>
         <p className="mt-5 max-w-xl text-sm leading-6 opacity-80">Book a free, no-obligation assessment with our care team. We are available to answer questions 24 hours a day.</p>
       </div>
       <div className="flex flex-wrap gap-3">

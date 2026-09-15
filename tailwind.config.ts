@@ -18,8 +18,8 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["'DM Sans'", "sans-serif"],
-      serif: ["'Lora'", "serif"],
+      sans: ["'Mandioca'", "'Trebuchet MS'", "sans-serif"],
+      serif: ["'Aether'", "Georgia", "serif"],
     },
     extend: {
       colors: {

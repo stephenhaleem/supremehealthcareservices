@@ -12,15 +12,15 @@ const testimonials = [
 const TestimonialsSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? testimonials.slice(0, limit) : testimonials;
   return (
-    <section className="border-b border-border bg-background py-24">
+    <section className="animate-section border-b border-border bg-card py-24">
       <div className="container">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <div><p className="section-label">Family stories</p><h2 className="section-title mt-5">Trusted in the moments that matter.</h2></div>
+          <div><p className="section-label">Family stories</p><h2 className="section-title mt-5"><span className="animate-word">Trusted in the moments</span> <span className="animate-word text-primary [animation-delay:120ms]">that matter.</span></h2></div>
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground"><span className="flex gap-1 text-primary">{[1,2,3,4,5].map((n) => <Star key={n} size={14} fill="currentColor" />)}</span> 5.0 average</div>
         </div>
         <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
           {shown.map((item) => (
-            <article key={item.name} className="group min-h-[280px] bg-background p-8 transition-colors hover:bg-secondary/40">
+            <article key={item.name} className="motion-hover group min-h-[280px] bg-background p-8 transition-colors hover:bg-secondary/40">
               <Quote size={28} strokeWidth={1.2} className="text-primary" />
               <blockquote className="mt-10 text-lg leading-7 text-foreground">“{item.text}”</blockquote>
               <div className="mt-8 border-t border-border pt-5"><p className="text-xs font-bold uppercase tracking-[0.1em] text-foreground">{item.name}</p><p className="mt-1 text-xs text-muted-foreground">{item.location}</p></div>

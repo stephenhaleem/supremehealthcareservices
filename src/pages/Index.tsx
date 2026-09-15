@@ -8,11 +8,13 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FindUsSection from "@/components/Findussection";
 import CtaBanner from "@/components/CtaBanner";
 import Footer from "@/components/Footer";
+import ImpactStats from "@/components/ImpactStats";
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
+    <ImpactStats />
     <WhyUsSection />
     <ServicesSection limit={6} />
     <HowItWorksSection />
