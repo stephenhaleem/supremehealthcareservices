@@ -69,7 +69,7 @@ const FindUsSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-px border border-border bg-border lg:grid-cols-5">
+        <div className="theme-card grid gap-0 lg:grid-cols-5">
           <div className="divide-y divide-border bg-background lg:col-span-2">
             {locations.map((l, i) => (
               <button
@@ -94,7 +94,7 @@ const FindUsSection = () => {
                     {l.city}
                   </span>
                   <span
-                    className={`text-[9px] font-bold uppercase tracking-[0.12em] ${
+                    className={`text-[9px] font-serif uppercase tracking-[0.12em] ${
                       activeLocation === i
                         ? "text-primary-foreground/80"
                         : "text-muted-foreground"
@@ -104,7 +104,7 @@ const FindUsSection = () => {
                   </span>
                 </div>
                 <p
-                  className={`mt-2 pl-6 text-xs ${activeLocation === i ? "text-primary-foreground/80" : "text-muted-foreground"}`}
+                  className={`mt-2 pl-6 text-xs font-serif ${activeLocation === i ? "text-primary-foreground/80" : "text-muted-foreground"}`}
                 >
                   {l.address}
                 </p>
@@ -116,11 +116,11 @@ const FindUsSection = () => {
               </p>
               <a
                 href={`tel:${loc.phone}`}
-                className="flex items-center gap-2.5 text-sm text-muted-foreground hover:text-primary"
+                className="flex items-center gap-2.5 text-sm text-muted-foreground  font-serif hover:text-primary"
               >
                 <Phone size={14} className="text-primary" /> {loc.phone}
               </a>
-              <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2.5 font-sesrif text-sm text-muted-foreground">
                 <Clock size={14} className="text-primary" /> {loc.hours}
               </div>
               <a

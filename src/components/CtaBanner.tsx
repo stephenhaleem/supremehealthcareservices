@@ -11,8 +11,8 @@ const CtaBanner = () => (
         <p className="mt-5 max-w-xl text-sm leading-6 opacity-80">Book a free, no-obligation assessment with our care team. We are available to answer questions 24 hours a day.</p>
       </div>
       <div className="flex flex-wrap gap-3">
-        <Button asChild variant="secondary" size="lg" className="rounded-none"><Link to="/contact">Book assessment <ArrowRight /></Link></Button>
-        <Button asChild size="lg" className="rounded-none border border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10"><a href="tel:18005550273"><Phone /> Call us</a></Button>
+        <Button asChild variant="secondary" size="lg" className="rounded-full"><Link to="/contact">Book assessment <ArrowRight /></Link></Button>
+        <Button asChild size="lg" className="rounded-full border border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10"><a href="tel:18005550273"><Phone /> Call us</a></Button>
       </div>
     </div>
   </section>

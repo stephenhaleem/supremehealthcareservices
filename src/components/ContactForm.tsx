@@ -51,7 +51,7 @@ const ContactForm = () => {
           </div>
           <Textarea name="message" placeholder="Tell us about your care needs…" className="sm:col-span-2 min-h-[120px]" maxLength={2000} />
           <div className="sm:col-span-2">
-            <Button type="submit" size="lg" className="w-full rounded-none text-xs font-bold uppercase tracking-[0.14em] sm:w-auto" disabled={loading}>
+            <Button type="submit" size="lg" className="w-full rounded-full text-xs font-bold uppercase tracking-[0.14em] sm:w-auto" disabled={loading}>
               <Send size={18} className="mr-2" /> {loading ? "Sending…" : "Request Free Assessment"}
             </Button>
           </div>

@@ -12,7 +12,7 @@ const Stat = ({ stat, active }: { stat: (typeof stats)[number]; active: boolean 
   const value = useAnimatedNumber(active, stat.end);
   return (
     <div className="motion-hover stat-item border-primary-foreground/20 px-5 text-center sm:border-r sm:last:border-r-0">
-      <p className="text-5xl font-semibold tracking-tight md:text-6xl">{stat.value === "4.9" ? (value / 10).toFixed(1) : value}{stat.suffix}</p>
+      <p className="font-serif text-5xl font-semibold tracking-tight md:text-6xl">{stat.value === "4.9" ? (value / 10).toFixed(1) : value}{stat.suffix}</p>
       <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground/70">{stat.label}</p>
     </div>
   );

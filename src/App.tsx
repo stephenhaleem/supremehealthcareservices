@@ -1,6 +1,7 @@
-import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import Lenis from "lenis";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,33 +16,87 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
+const SmoothScroll = () => {
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const lenis = new Lenis({ autoRaf: true, lerp: 0.05 });
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
+};
+
 const ScrollAnimationObserver = () => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const observer = reducedMotion
+      ? null
+      : new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const element = entry.target as HTMLElement;
+              element.classList.add(
+                element.classList.contains("reveal-card")
+                  ? "reveal-visible"
+                  : "is-visible",
+              );
+              observer?.unobserve(element);
+            });
+          },
+          { threshold: 0, rootMargin: "0px 0px -8% 0px" },
+        );
+
+    const revealElements = () => {
+      const sections = document.querySelectorAll<HTMLElement>(
+        ".animate-section:not([data-scroll-bound])",
+      );
+      const cards = document.querySelectorAll<HTMLElement>(
+        ".reveal-card:not([data-scroll-bound])",
+      );
+
+      sections.forEach((section) => {
+        section.dataset.scrollBound = "true";
+        const revealItems = section.querySelectorAll<HTMLElement>(
+          ":scope > .container > *, :scope > .container .theme-card, :scope > .container article",
+        );
+        revealItems.forEach((item, index) => {
+          if (item === section || item.classList.contains("section-reveal"))
+            return;
+          item.classList.add("section-reveal");
+          item.style.transitionDelay = `${Math.min(index * 80, 320)}ms`;
         });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
-    );
-    const revealSections = () => {
-      document.querySelectorAll<HTMLElement>(".animate-section:not(.is-visible)").forEach((section) => {
-        observer.observe(section);
+
+        if (reducedMotion) {
+          section.classList.add("is-visible");
+          return;
+        }
+        observer?.observe(section);
+      });
+
+      cards.forEach((card) => {
+        card.dataset.scrollBound = "true";
+        if (reducedMotion) {
+          card.classList.add("reveal-visible");
+          return;
+        }
+        observer?.observe(card);
       });
     };
-    const mutations = new MutationObserver(revealSections);
 
-    revealSections();
-    requestAnimationFrame(revealSections);
+    revealElements();
+    const mutations = new MutationObserver(revealElements);
     mutations.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      observer.disconnect();
       mutations.disconnect();
+      observer?.disconnect();
     };
   }, []);
 
@@ -54,6 +109,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <SmoothScroll />
         <ScrollAnimationObserver />
         <Routes>
           <Route path="/" element={<Index />} />

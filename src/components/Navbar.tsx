@@ -60,13 +60,14 @@ const Navbar = () => {
         <div className="hidden items-center gap-5 lg:flex">
           <a
             href="tel:18005550273"
-            className="flex items-center gap-2 text-xs font-semibold text-foreground"
+            className="flex items-center gap-2 text-xs font-serif text-foreground"
           >
-            <Phone size={14} className="text-primary" /> 1-800-555-CARE
+            <Phone size={14} className="text-primary font-serif" />{" "}
+            1-800-555-CARE
           </a>
           <Button
             asChild
-            className="rounded-none px-5 text-[10px] font-bold uppercase tracking-[0.14em]"
+            className="rounded-full px-5 text-[10px] font-bold uppercase tracking-[0.14em]"
           >
             <Link to="/contact">Free assessment</Link>
           </Button>
@@ -75,7 +76,7 @@ const Navbar = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-none lg:hidden"
+          className="rounded-full lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
         >
@@ -88,7 +89,7 @@ const Navbar = () => {
           className="border-t border-border bg-background px-6 py-5 lg:hidden"
           aria-label="Mobile navigation"
         >
-          <div className="grid gap-px border border-border bg-border">
+          <div className="theme-card grid gap-0">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -105,7 +106,7 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <Button asChild className="mt-4 w-full rounded-none">
+          <Button asChild className="mt-4 w-full rounded-full">
             <Link to="/contact">Book a free assessment</Link>
           </Button>
         </nav>

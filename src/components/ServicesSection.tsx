@@ -22,9 +22,9 @@ const ServicesSection = ({ limit }: { limit?: number }) => {
           </div>
           <p className="max-w-md text-sm leading-6 text-muted-foreground">A complete range of in-home services, thoughtfully tailored to changing needs and personal routines.</p>
         </div>
-        <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+        <div className="services-grid grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {shown.map((service, index) => (
-            <article key={service.title} className={`motion-hover reveal-card ${index % 2 === 0 ? "reveal-from-left" : "reveal-from-right"} group bg-background`}>
+            <article key={service.title} className="theme-card motion-hover group">
               <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                 <img src={service.img} alt={service.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <span className="absolute left-4 top-4 bg-background px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-foreground">{service.category}</span>

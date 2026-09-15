@@ -19,7 +19,7 @@ export default {
     },
     fontFamily: {
       sans: ["'Mandioca'", "'Trebuchet MS'", "sans-serif"],
-      serif: ["'Aether'", "Georgia", "serif"],
+      serif: ["'Aether Regular'", "Georgia", "serif"],
     },
     extend: {
       colors: {
