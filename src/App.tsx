@@ -18,13 +18,14 @@ const queryClient = new QueryClient();
 
 const SmoothScroll = () => {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (reducedMotion || isTouch) return; // skip Lenis on touch, use native scroll
 
     const lenis = new Lenis({ autoRaf: true, lerp: 0.05 });
-
-    return () => {
-      lenis.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
 
   return null;
@@ -50,7 +51,7 @@ const ScrollAnimationObserver = () => {
               observer?.unobserve(element);
             });
           },
-          { threshold: 0, rootMargin: "0px 0px -8% 0px" },
+          { threshold: 0.2, rootMargin: "0px 0px -5% 0px" },
         );
 
     const revealElements = () => {
@@ -70,7 +71,7 @@ const ScrollAnimationObserver = () => {
           if (item === section || item.classList.contains("section-reveal"))
             return;
           item.classList.add("section-reveal");
-          item.style.transitionDelay = `${Math.min(index * 80, 320)}ms`;
+          item.style.transitionDelay = `${Math.min(index * 110, 550)}ms`;
         });
 
         if (reducedMotion) {

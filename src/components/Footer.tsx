@@ -46,7 +46,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="py-9">
+      <div className="py-9 reveal-card">
         <p
           aria-label="Rooted With You"
           className="typing-word text-center text-[clamp(2.3rem,9.4vw,10rem)] font-bold leading-none text-background"
