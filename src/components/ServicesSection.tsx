@@ -1,106 +1,48 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const services = [
-  {
-    title: "Personal Care",
-    category: "Daily Assistance",
-    desc: "Bathing, grooming, dressing, and hygiene assistance with dignity and respect for your loved one.",
-    img: "https://images.unsplash.com/photo-1775642545871-ba7503fec638?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Meal Preparation",
-    category: "Nutrition & Wellness",
-    desc: "Nutritious, delicious meals crafted with care and tailored to dietary needs and preferences.",
-    img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80",
-  },
-  {
-    title: "Dementia & Alzheimer's Care",
-    category: "Specialized Care",
-    desc: "Specialized, patient support for cognitive conditions by trained professionals who truly understand.",
-    img: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Respite Care",
-    category: "Family Support",
-    desc: "Temporary relief for primary family caregivers — giving you the rest you need and deserve.",
-    img: "https://images.unsplash.com/photo-1765896387454-3c29c0473615?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Companionship",
-    category: "Social & Emotional",
-    desc: "Friendly conversation, activities, and genuine emotional support to reduce isolation and loneliness.",
-    img: "https://images.unsplash.com/photo-1762955911769-d652ceaa94bb?q=80&w=1121&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "24-Hour / Overnight Care",
-    category: "Round-the-Clock",
-    desc: "Continuous professional care and supervision for those who need overnight or live-in assistance.",
-    img: "https://images.unsplash.com/photo-1740479050151-5d26c764403e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
+  { title: "Personal Care", category: "Daily assistance", desc: "Bathing, grooming, dressing, mobility, and hygiene support delivered with dignity.", img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=900&q=85" },
+  { title: "Meal Preparation", category: "Nutrition", desc: "Fresh, nourishing meals planned around dietary needs and personal preferences.", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=900&q=85" },
+  { title: "Dementia Care", category: "Specialized care", desc: "Calm, consistent support from aides trained in memory care and cognitive conditions.", img: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=900&q=85" },
+  { title: "Respite Care", category: "Family support", desc: "Reliable short-term relief that gives family caregivers time to rest and recharge.", img: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=900&q=85" },
+  { title: "Companionship", category: "Social wellbeing", desc: "Conversation, outings, activities, and meaningful connection that reduce isolation.", img: "https://images.unsplash.com/photo-1559234938-b60fff04894d?w=900&q=85" },
+  { title: "Overnight Care", category: "Around the clock", desc: "Attentive overnight or live-in assistance for safety, comfort, and peace of mind.", img: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=900&q=85" },
 ];
 
 const ServicesSection = ({ limit }: { limit?: number }) => {
   const shown = limit ? services.slice(0, limit) : services;
-
   return (
-    <section className="py-20 section-gradient">
+    <section className="border-b border-border bg-secondary/40 py-24">
       <div className="container">
-        <p className="text-center text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2">
-          WHAT WE OFFER
-        </p>
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-foreground mb-3">
-          Trustworthy & Compassionate{" "}
-          <span className="italic font-normal">Care Solutions</span>
-        </h2>
-        <p className="text-center text-sm text-muted-foreground max-w-lg mx-auto mb-12">
-          Comprehensive care plans designed around your unique needs, delivered
-          by certified healthcare aides.
-        </p>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {shown.map((s, i) => (
-            <div
-              key={s.title}
-              className="group bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover hover:-translate-y-1 transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${i * 60}ms` }}
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={s.img}
-                  alt={s.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <span className="absolute top-3 left-3 bg-primary/90 text-primary-foreground text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
-                  {s.category}
-                </span>
+        <div className="mb-12 flex flex-col justify-between gap-7 md:flex-row md:items-end">
+          <div>
+            <p className="section-label">Care solutions</p>
+            <h2 className="section-title mt-5">Support for every day.</h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-muted-foreground">A complete range of in-home services, thoughtfully tailored to changing needs and personal routines.</p>
+        </div>
+        <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {shown.map((service, index) => (
+            <article key={service.title} className="group bg-background">
+              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <img src={service.img} alt={service.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <span className="absolute left-4 top-4 bg-background px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-foreground">{service.category}</span>
               </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <h3 className="font-bold text-base text-foreground mb-2">
-                  {s.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-                  {s.desc}
-                </p>
+              <div className="p-7">
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <span className="text-[10px] font-semibold text-muted-foreground">0{index + 1}</span>
+                    <h3 className="mt-2 text-xl font-semibold text-foreground">{service.title}</h3>
+                  </div>
+                  <ArrowUpRight size={18} className="text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                </div>
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">{service.desc}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-
-        {limit && (
-          <div className="text-center mt-10">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm border border-primary rounded-full px-6 py-2.5 hover:bg-primary hover:text-white transition-all"
-            >
-              View All Services <ArrowRight size={15} />
-            </Link>
-          </div>
-        )}
+        {limit && <Link to="/services" className="mt-8 inline-flex border-b-2 border-primary pb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-primary">Explore all services</Link>}
       </div>
     </section>
   );
