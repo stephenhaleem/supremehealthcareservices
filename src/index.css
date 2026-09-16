@@ -181,6 +181,20 @@
     @apply overflow-hidden rounded-3xl border border-primary/15 bg-card;
     box-shadow: var(--card-shadow);
   }
+
+  .mobile-nav-panel {
+    @apply pointer-events-none max-h-0 overflow-hidden opacity-0;
+    transform: translateY(-0.5rem);
+    transition:
+      max-height 350ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 250ms ease,
+      transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-nav-panel-open {
+    @apply pointer-events-auto max-h-[30rem] opacity-100;
+    transform: translateY(0);
+  }
 }
 
 /* ── Entrance animations ──────────────────────────────────── */

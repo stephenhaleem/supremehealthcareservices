@@ -22,8 +22,8 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="container flex h-20 items-center justify-between">
+    <header className="sticky top-0 z-50 bg-transparent px-3 pt-3 sm:px-5 lg:px-8">
+      <div className="container flex h-16 items-center justify-between rounded-full border border-primary/15 bg-background/90 px-4 shadow-[0_8px_30px_-14px_hsl(var(--primary)/0.45)] backdrop-blur-md sm:px-6">
         <Link
           to="/"
           className="flex items-center gap-3"
@@ -76,17 +76,28 @@ const Navbar = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-full lg:hidden"
+          className="relative rounded-full lg:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
-          {open ? <X /> : <Menu />}
+          <Menu
+            className={`absolute transition-all duration-300 ${open ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"}`}
+          />
+          <X
+            className={`absolute transition-all duration-300 ${open ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"}`}
+          />
         </Button>
       </div>
 
-      {open && (
+      <div
+        id="mobile-navigation"
+        className={`mobile-nav-panel lg:hidden ${open ? "mobile-nav-panel-open" : ""}`}
+        aria-hidden={!open}
+      >
         <nav
-          className="border-t border-border bg-background px-6 py-5 lg:hidden"
+          className="container rounded-3xl border border-primary/15 bg-background/95 px-4 py-4 shadow-[0_8px_30px_-14px_hsl(var(--primary)/0.45)] backdrop-blur-md"
           aria-label="Mobile navigation"
         >
           <div className="theme-card grid gap-0">
@@ -110,7 +121,7 @@ const Navbar = () => {
             <Link to="/contact">Book a free assessment</Link>
           </Button>
         </nav>
-      )}
+      </div>
     </header>
   );
 };
