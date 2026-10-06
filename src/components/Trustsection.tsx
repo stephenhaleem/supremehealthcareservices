@@ -1,87 +1,43 @@
-import { ShieldCheck, Clock, Star } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-
-const badges = [
-  { icon: ShieldCheck, label: "Licensed", sub: "Healthcare aides" },
-  { icon: Clock, label: "24 hour", sub: "Availability" },
-  { icon: Star, label: "Top rated", sub: "5-star service" },
-];
+import { Check, MessageCircle, ClipboardCheck, HeartHandshake } from "lucide-react";
 
 const TrustSection = () => {
   return (
-    <section className="animate-section theme-wash border-b border-border py-24">
-      <div className="container grid gap-14 lg:grid-cols-[1fr_1.1fr]">
-        <div className="relative">
-          <div className="theme-card grid grid-cols-2 gap-0">
-            <div className="aspect-[4/5] overflow-hidden bg-muted">
-              <img
-                src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=700&q=80"
-                alt="Caregiver and senior"
-                className="h-full w-full rounded-t-[45%] object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-            <div className="aspect-[4/5] overflow-hidden bg-muted">
-              <img
-                src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=700&q=80"
-                alt="Professional home care"
-                className="h-full w-full rounded-b-[45%] object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </div>
-          <div className="theme-card absolute -bottom-6 left-6 flex items-center gap-3 bg-background px-5 py-4">
-            <div className="flex gap-0.5 text-primary">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={12} fill="currentColor" />
-              ))}
-            </div>
-            <div>
-              <p className="text-xs font-bold text-foreground">
-                Excellent — 100+ reviews
-              </p>
-              <p className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground">
-                Google verified
-              </p>
-            </div>
-          </div>
+    <section className="animate-section border-b border-border bg-[#e9eee2] py-16 md:py-20">
+      <div className="container grid max-w-6xl items-center gap-8 md:grid-cols-2 md:gap-12">
+        <div className="overflow-hidden rounded-sm">
+          <img
+            src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1100&q=85"
+            alt="A caregiver listening and talking with an older adult at home"
+            loading="lazy"
+            className="aspect-[4/3] h-full w-full object-cover"
+          />
         </div>
-
-        <div className="pt-2">
-          <p className="section-label">Why families choose us</p>
-          <h2 className="section-title mt-5">Care you can count on.</h2>
-          <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
-            We understand that inviting someone into your home takes trust.
-            That's why every Rooted With You professional is rigorously
-            screened, trained, and matched to your specific needs — so you never
-            have to wonder if your loved one is in good hands.
+        <div>
+          <p className="section-label">The person comes first</p>
+          <h2 className="mt-4 max-w-lg text-3xl font-medium leading-tight text-foreground md:text-4xl">
+            Good support begins with getting to know you.
+          </h2>
+          <p className="mt-4 text-xs leading-6 text-muted-foreground md:text-sm">
+            Your story, your preferences, your small daily rituals. These are the
+            starting points for the kind of dependable in-home support we
+            provide at Rooted With You.
           </p>
-
-          <div className="theme-card mt-10 grid grid-cols-3 gap-0 font-serif">
-            {badges.map((b) => (
-              <div
-                key={b.label}
-                className="flex flex-col items-start gap-3 font-serif bg-background p-5"
-              >
-                <b.icon size={20} strokeWidth={1.5} className="text-primary" />
+          <ol className="mt-5 divide-y divide-primary/10">
+            {[
+              { icon: MessageCircle, title: "Listen first", text: "Learn what matters to you, your culture and way of life." },
+              { icon: ClipboardCheck, title: "Plan together", text: "Match the right help to your home, routines and care priorities." },
+              { icon: HeartHandshake, title: "Keep the conversation open", text: "Adjust support as your preferences and needs change." },
+            ].map((step) => (
+              <li key={step.title} className="flex gap-3 py-3">
+                <step.icon size={15} strokeWidth={1.5} className="mt-0.5 shrink-0 text-primary" />
                 <div>
-                  <p className="text-sm leading-tight text-foreground font-serif">
-                    {b.label}
-                  </p>
-                  <p className="text-[10px] uppercase tracking-[0.08em] text-muted-foreground font-serif">
-                    {b.sub}
-                  </p>
+                  <h3 className="text-xs font-semibold text-foreground">{step.title}</h3>
+                  <p className="mt-1 text-[10px] leading-4 text-muted-foreground">{step.text}</p>
                 </div>
-              </div>
+                <Check size={13} className="ml-auto mt-0.5 shrink-0 text-primary/70" />
+              </li>
             ))}
-          </div>
-
-          <Button
-            asChild
-            size="lg"
-            className="mt-10 rounded-full px-7 text-xs font-bold uppercase tracking-[0.14em]"
-          >
-            <Link to="/contact">Get a free assessment</Link>
-          </Button>
+          </ol>
         </div>
       </div>
     </section>

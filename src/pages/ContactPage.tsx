@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/ContactForm";
+import FindUsSection from "@/components/Findussection";
 import Footer from "@/components/Footer";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
@@ -45,6 +46,7 @@ const ContactPage = () => (
     </section>
 
     <ContactForm />
+    <FindUsSection />
     <Footer />
   </div>
 );

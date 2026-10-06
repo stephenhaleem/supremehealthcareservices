@@ -2,26 +2,30 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import ServicesSection from "@/components/ServicesSection";
-import HowItWorksSection from "@/components/Howitworkssection";
 import TrustSection from "@/components/Trustsection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FindUsSection from "@/components/Findussection";
-import CtaBanner from "@/components/CtaBanner";
+import {
+  DayToDaySection,
+  HomeGallerySection,
+  HomeVisitSection,
+  DecisionStepsSection,
+  FaqSection,
+} from "@/components/HomeFeatureSections";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import ImpactStats from "@/components/ImpactStats";
 
 const Index = () => (
   <div className="min-h-screen">
     <Navbar />
     <HeroSection />
-    <ImpactStats />
     <WhyUsSection />
-    <ServicesSection limit={6} />
-    <HowItWorksSection />
+    <ServicesSection limit={6} variant="compact" />
     <TrustSection />
-    <TestimonialsSection limit={3} />
-    <FindUsSection />
-    <CtaBanner />
+    <DayToDaySection />
+    <HomeVisitSection />
+    <HomeGallerySection />
+    <DecisionStepsSection />
+    <FaqSection />
+    <ContactForm variant="home" />
     <Footer />
   </div>
 );

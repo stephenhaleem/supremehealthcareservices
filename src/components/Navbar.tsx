@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HeartPulse, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,37 +22,39 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent px-3 pt-3 sm:px-5 lg:px-8">
-      <div className="container overflow-hidden rounded-[2rem] border border-primary/15 bg-background/90 shadow-[0_8px_30px_-14px_hsl(var(--primary)/0.45)] backdrop-blur-md">
-        {/* Top bar row — always present */}
-        <div className="flex h-16 items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-0 z-50 border-b border-[#d9d1c7] bg-[#f7f5ef]/95 px-3 backdrop-blur-md sm:px-5 lg:px-8">
+      <div className="container">
+        <p className="hidden h-6 items-center justify-center text-[8px] font-medium text-primary/80 sm:flex">
+          Dependable in-home care and support across Alberta
+        </p>
+        <div className="flex h-16 items-center justify-between">
           <Link
             to="/"
             className="flex items-center gap-3"
             aria-label="Rooted With You home"
           >
-            <span className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/30 text-primary">
               <HeartPulse size={19} />
             </span>
             <span className="leading-none">
-              <span className="block text-sm font-bold uppercase text-foreground">
+              <span className="block font-serif text-sm font-semibold text-foreground">
                 Rooted With You
               </span>
-              <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              <span className="mt-1 block text-[8px] font-medium text-muted-foreground">
                 At Home Services
               </span>
             </span>
           </Link>
 
           <nav
-            className="hidden items-center gap-8 lg:flex"
+            className="hidden items-center gap-7 lg:flex"
             aria-label="Primary navigation"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-[10px] font-bold uppercase tracking-[0.16em] transition-colors ${location.pathname === link.path ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+                className={`text-[11px] font-medium transition-colors ${location.pathname === link.path ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
               >
                 {link.label}
               </Link>
@@ -62,14 +64,13 @@ const Navbar = () => {
           <div className="hidden items-center gap-5 lg:flex">
             <a
               href="tel:18005550273"
-              className="flex items-center gap-2 text-xs font-serif text-foreground"
+              className="flex items-center gap-2 text-xs font-medium text-foreground"
             >
-              <Phone size={14} className="text-primary font-serif" />{" "}
-              1-800-555-CARE
+              <Phone size={14} className="text-primary" /> 1-800-555-CARE
             </a>
             <Button
               asChild
-              className="rounded-full px-5 text-[10px] font-bold uppercase tracking-[0.14em]"
+              className="rounded-md bg-[#2b544d] px-5 text-[10px] font-semibold text-white hover:bg-[#214a45]"
             >
               <Link to="/contact">Free assessment</Link>
             </Button>
@@ -78,7 +79,7 @@ const Navbar = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="relative rounded-full lg:hidden"
+            className="relative rounded-full text-foreground lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label="Toggle navigation"
             aria-expanded={open}
@@ -93,24 +94,21 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Menu content — the pill "grows" to reveal this, and shrinks to hide it */}
         <div
           id="mobile-navigation"
-          className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${
-            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-          }`}
+          className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] lg:hidden ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
           aria-hidden={!open}
         >
           <div className="overflow-hidden">
             <nav
-              className="grid divide-y divide-primary/10 border-t border-primary/10 px-4"
+              className="grid divide-y divide-primary/10 border-t border-primary/10"
               aria-label="Mobile navigation"
             >
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="flex items-center justify-between py-4 text-xs font-bold uppercase tracking-[0.14em] text-foreground"
+                  className="flex items-center justify-between py-4 text-xs font-medium text-foreground"
                 >
                   {link.label}
                   <img
@@ -122,8 +120,8 @@ const Navbar = () => {
                 </Link>
               ))}
             </nav>
-            <div className="px-4 pb-4 pt-1">
-              <Button asChild className="w-full rounded-full">
+            <div className="pb-4 pt-1">
+              <Button asChild className="w-full rounded-md bg-[#2b544d] text-white hover:bg-[#214a45]">
                 <Link to="/contact">Book a free assessment</Link>
               </Button>
             </div>

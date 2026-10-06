@@ -57,48 +57,48 @@
   }
 
   :root {
-    --background: 75 81.8% 87.1%;
-    --foreground: 151.1 41.8% 26.3%;
+    --background: 38 18% 94%;
+    --foreground: 24 21% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 151.1 41.8% 26.3%;
+    --card-foreground: 24 21% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 151.1 41.8% 26.3%;
+    --popover-foreground: 24 21% 20%;
 
-    --primary: 153.1 63% 18%;
+    --primary: 167 22% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 72 100% 89%;
-    --secondary-foreground: 151.1 41.8% 26.3%;
+    --secondary: 36 18% 88%;
+    --secondary-foreground: 24 21% 20%;
 
-    --muted: 72 45% 90%;
-    --muted-foreground: 158 18% 38%;
+    --muted: 36 22% 90%;
+    --muted-foreground: 24 10% 36%;
 
-    --accent: 72 100% 86%;
-    --accent-foreground: 151.1 41.8% 26.3%;
+    --accent: 38 26% 93%;
+    --accent-foreground: 24 21% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 158 18% 84%;
-    --input: 158 18% 80%;
-    --ring: 153.1 63% 18%;
+    --border: 32 18% 82%;
+    --input: 32 18% 82%;
+    --ring: 167 22% 25%;
 
-    --radius: 1.25rem;
+    --radius: 1.5rem;
 
     --hero-gradient: linear-gradient(
-      150deg,
-      hsl(158 48% 20%),
-      hsl(158 48% 30%)
+      135deg,
+      hsl(32 22% 94%),
+      hsl(30 18% 90%)
     );
     --section-gradient: linear-gradient(
       180deg,
-      hsl(72 100% 94%),
-      hsl(72 45% 90%)
+      hsl(38 18% 94%),
+      hsl(38 18% 97%)
     );
-    --card-shadow: 0 4px 18px -5px hsl(158 48% 25% / 0.14);
-    --card-shadow-hover: 0 12px 28px -6px hsl(158 48% 25% / 0.2);
+    --card-shadow: 0 14px 30px -16px hsl(24 22% 20% / 0.2);
+    --card-shadow-hover: 0 20px 40px -20px hsl(24 22% 20% / 0.25);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -118,6 +118,8 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+    background-image: linear-gradient(180deg, #f4f1ea 0%, #f7f3ee 100%);
+    color: hsl(var(--foreground));
     font-family: "Mandioca", "Trebuchet MS", sans-serif;
     font-weight: 400;
     letter-spacing: 0;
@@ -131,6 +133,10 @@
     font-family: "Aether Regular", Georgia, serif;
     font-weight: 500;
     letter-spacing: 0.005em;
+  }
+
+  p {
+    letter-spacing: -0.01em;
   }
 }
 
