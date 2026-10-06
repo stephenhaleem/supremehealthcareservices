@@ -31,79 +31,6 @@ const SmoothScroll = () => {
   return null;
 };
 
-const ScrollAnimationObserver = () => {
-  useEffect(() => {
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    const observer = reducedMotion
-      ? null
-      : new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              const element = entry.target as HTMLElement;
-              element.classList.add(
-                element.classList.contains("reveal-card")
-                  ? "reveal-visible"
-                  : "is-visible",
-              );
-              observer?.unobserve(element);
-            });
-          },
-          { threshold: 0.2, rootMargin: "0px 0px -5% 0px" },
-        );
-
-    const revealElements = () => {
-      const sections = document.querySelectorAll<HTMLElement>(
-        ".animate-section:not([data-scroll-bound])",
-      );
-      const cards = document.querySelectorAll<HTMLElement>(
-        ".reveal-card:not([data-scroll-bound])",
-      );
-
-      sections.forEach((section) => {
-        section.dataset.scrollBound = "true";
-        const revealItems = section.querySelectorAll<HTMLElement>(
-          ":scope > .container > *, :scope > .container .theme-card, :scope > .container article",
-        );
-        revealItems.forEach((item, index) => {
-          if (item === section || item.classList.contains("section-reveal"))
-            return;
-          item.classList.add("section-reveal");
-          item.style.transitionDelay = `${Math.min(index * 110, 550)}ms`;
-        });
-
-        if (reducedMotion) {
-          section.classList.add("is-visible");
-          return;
-        }
-        observer?.observe(section);
-      });
-
-      cards.forEach((card) => {
-        card.dataset.scrollBound = "true";
-        if (reducedMotion) {
-          card.classList.add("reveal-visible");
-          return;
-        }
-        observer?.observe(card);
-      });
-    };
-
-    revealElements();
-    const mutations = new MutationObserver(revealElements);
-    mutations.observe(document.body, { childList: true, subtree: true });
-
-    return () => {
-      mutations.disconnect();
-      observer?.disconnect();
-    };
-  }, []);
-
-  return null;
-};
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -111,7 +38,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SmoothScroll />
-        <ScrollAnimationObserver />
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />

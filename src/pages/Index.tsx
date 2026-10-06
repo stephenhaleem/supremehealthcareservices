@@ -5,8 +5,8 @@ import ServicesSection from "@/components/ServicesSection";
 import TrustSection from "@/components/Trustsection";
 import {
   DayToDaySection,
-  HomeGallerySection,
   HomeVisitSection,
+  HomeGallerySection,
   DecisionStepsSection,
   FaqSection,
 } from "@/components/HomeFeatureSections";
@@ -18,14 +18,14 @@ const Index = () => (
     <Navbar />
     <HeroSection />
     <WhyUsSection />
-    <ServicesSection limit={6} variant="compact" />
+    <ServicesSection limit={6} />
     <TrustSection />
     <DayToDaySection />
     <HomeVisitSection />
     <HomeGallerySection />
     <DecisionStepsSection />
     <FaqSection />
-    <ContactForm variant="home" />
+    <ContactForm />
     <Footer />
   </div>
 );

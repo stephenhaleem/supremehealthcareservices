@@ -18,8 +18,8 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["'Mandioca'", "'Trebuchet MS'", "sans-serif"],
-      serif: ["'Aether Regular'", "Georgia", "serif"],
+      sans: ["Inter", "system-ui", "sans-serif"],
+      serif: ["Lora", "Georgia", "serif"],
     },
     extend: {
       colors: {

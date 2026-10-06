@@ -1,53 +1,69 @@
 import { Link } from "react-router-dom";
-import { HeartPulse } from "lucide-react";
+import { Logo } from "@/components/Navbar";
+
+const cols = [
+  {
+    h: "Discover",
+    links: [
+      ["Our support", "/about"],
+      ["Services", "/services"],
+      ["Our team", "/testimonials"],
+      ["Our approach", "/about"],
+    ],
+  },
+  {
+    h: "For families",
+    links: [
+      ["Planning a conversation", "/contact"],
+      ["Helpful questions", "/contact"],
+      ["Choosing support", "/services"],
+      ["Contact us", "/contact"],
+    ],
+  },
+];
 
 const Footer = () => (
-  <footer className="animate-section border-t border-border bg-[#f7f5ef] text-foreground">
-    <div className="container max-w-6xl py-10 md:py-12">
-      <div className="grid gap-8 border-b border-border pb-8 sm:grid-cols-2 lg:grid-cols-[1.3fr_.7fr_.9fr_1.1fr]">
+  <footer className="bg-background">
+    <div className="mx-auto max-w-[1440px] px-6 pt-16 md:px-20">
+      <div className="grid gap-10 border-b border-border pb-12 md:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
         <div>
-          <Link to="/" className="inline-flex items-center gap-2" aria-label="Rooted With You home">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 text-primary">
-              <HeartPulse size={17} />
-            </span>
-            <span className="font-serif text-sm font-semibold">Rooted With You</span>
-          </Link>
-          <p className="mt-3 max-w-xs text-[10px] leading-5 text-muted-foreground">
-            Dependable, compassionate in-home care and support throughout Alberta.
+          <Logo />
+        </div>
+        {cols.map((c) => (
+          <div key={c.h}>
+            <p className="text-sm font-semibold text-foreground">{c.h}</p>
+            <div className="mt-4 grid gap-3 text-sm text-muted-foreground">
+              {c.links.map(([l, to]) => (
+                <Link key={l} to={to} className="hover:text-primary">
+                  {l}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+        <div>
+          <p className="text-sm font-semibold text-foreground">
+            Start with a conversation
+          </p>
+          <a
+            href="tel:6135550148"
+            className="mt-4 block font-serif text-[26px] text-primary"
+          >
+            613-555-0148
+          </a>
+          <p className="mt-3 text-sm text-muted-foreground">
+            hello@rootedwithyou.example
           </p>
         </div>
-        <div>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Discover</p>
-          <div className="mt-3 grid gap-2 text-[10px] text-muted-foreground">
-            <Link to="/about" className="hover:text-primary">Our approach</Link>
-            <Link to="/services" className="hover:text-primary">Our services</Link>
-            <Link to="/testimonials" className="hover:text-primary">Testimonials</Link>
-            <Link to="/contact" className="hover:text-primary">Contact us</Link>
-          </div>
-        </div>
-        <div>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">For families</p>
-          <div className="mt-3 grid gap-2 text-[10px] text-muted-foreground">
-            <Link to="/services" className="hover:text-primary">Personal care</Link>
-            <Link to="/services" className="hover:text-primary">Dementia support</Link>
-            <Link to="/services" className="hover:text-primary">Companionship</Link>
-            <Link to="/services" className="hover:text-primary">Respite care</Link>
-          </div>
-        </div>
-        <div>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Start a conversation</p>
-          <div className="mt-3 grid gap-2 text-[10px] text-muted-foreground">
-            <a href="tel:18005550273" className="font-serif text-base font-semibold text-primary hover:underline">1-800-555-CARE</a>
-            <a href="mailto:info@rootedwithyou.ca" className="hover:text-primary">info@rootedwithyou.ca</a>
-            <span>Serving all Alberta · Available 24/7</span>
-          </div>
-        </div>
       </div>
-      <div className="flex flex-col justify-between gap-3 pt-5 text-[9px] text-muted-foreground sm:flex-row sm:items-center">
-        <p>© {new Date().getFullYear()} Rooted With You At Home Services</p>
-        <div className="flex gap-5">
-          <Link to="/privacy" className="hover:text-primary">Privacy</Link>
-          <Link to="/terms" className="hover:text-primary">Terms</Link>
+      <div className="grid items-center gap-3 py-7 text-[11px] text-muted-foreground md:grid-cols-3">
+        <p>© {new Date().getFullYear()} Rooted With You · Concept design</p>
+        <p className="font-serif text-[15px] italic text-foreground md:text-center">
+          Dependable support. A lot of life.
+        </p>
+        <div className="flex gap-6 md:justify-end">
+          <Link to="/privacy">Privacy</Link>
+          <Link to="/terms">Accessibility</Link>
         </div>
       </div>
     </div>

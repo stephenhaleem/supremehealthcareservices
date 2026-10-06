@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import {
+  Accessibility,
   ArrowUpRight,
-  Heart,
+  BookOpen,
   Leaf,
-  ShieldCheck,
-  UserRoundCheck,
+  Armchair,
+  TreePine,
+  Minus,
+  Plus,
 } from "lucide-react";
 import {
   Accordion,
@@ -13,193 +16,177 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const dayToDayMoments = [
+const Label = ({ children }: { children: React.ReactNode }) => (
+  <p className="text-[11px] font-medium uppercase tracking-[0.06em] text-primary">
+    {children}
+  </p>
+);
+const wrap = "mx-auto max-w-[1440px] px-6 md:px-20";
+
+const moments = [
   {
-    category: "Morning",
+    cat: "Morning",
     title: "A gentle start",
     text: "A cup of tea, a favourite spot in the sunshine and support with morning routines when you need it.",
-    image:
-      "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=900&q=85",
-    alt: "A caregiver sharing a calm moment with an older adult",
+    img: "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=900&q=85",
   },
   {
-    category: "Afternoon",
+    cat: "Afternoon",
     title: "Something to look forward to",
     text: "A walk, a creative project or a friendly conversation with a healthcare aide who knows your home.",
-    image:
-      "https://images.unsplash.com/photo-1559234938-b60fff04894d?w=900&q=85",
-    alt: "An older adult enjoying company and conversation",
+    img: "https://images.unsplash.com/photo-1559234938-b60fff04894d?w=900&q=85",
   },
   {
-    category: "Evening",
+    cat: "Evening",
     title: "Good company",
-    text: "Music, familiar stories and time spent with dependable support nearby.",
-    image:
-      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85",
-    alt: "A family spending time together at home",
-  },
-];
-
-const trustPoints = [
-  { icon: Heart, text: "Support tailored to your home" },
-  { icon: UserRoundCheck, text: "Licensed healthcare aides" },
-  { icon: ShieldCheck, text: "CPR certified" },
-  { icon: ShieldCheck, text: "Police checked" },
-];
-
-const questions = [
-  {
-    question: "How do I know which service is right?",
-    answer:
-      "We begin by listening. A care coordinator can learn about your routines, priorities and support needs, then help you explore the options that fit.",
-  },
-  {
-    question: "What should the first conversation cover?",
-    answer:
-      "We can talk through what a typical day looks like, where a little extra help would be useful, and what matters most to you and your family.",
-  },
-  {
-    question: "Are healthcare aides available 24/7?",
-    answer:
-      "Care schedules depend on your needs and location. Contact our team to discuss available visit times, overnight care and ongoing support.",
-  },
-  {
-    question: "What can someone bring from home?",
-    answer:
-      "Your familiar routines, preferences and personal touches help us shape support around you. We can discuss practical details together during your assessment.",
+    text: "Music, familiar stories and time to unwind with dependable support nearby.",
+    img: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=900&q=85",
   },
 ];
 
 export const DayToDaySection = () => (
-  <section className="animate-section border-b border-border bg-[#fffefa] py-16 md:py-20">
-    <div className="container max-w-6xl">
-      <div className="mb-7 grid gap-4 md:grid-cols-2 md:items-end">
-        <div>
-          <p className="section-label">A little dependable support</p>
-          <h2 className="mt-4 text-3xl font-medium leading-tight text-foreground md:text-4xl">
-            A day with room for you.
-          </h2>
-        </div>
-        <p className="max-w-lg text-xs leading-6 text-muted-foreground md:justify-self-end md:text-sm">
-          Imagine a day where help is available when you need it, so you can stay
-          safe, confident and connected at home.
+  <section className="bg-card py-24">
+    <div className={wrap}>
+      <Label>A day with dependable support</Label>
+      <div className="mt-3 grid gap-4 md:grid-cols-2 md:items-end">
+        <h2 className="text-4xl text-foreground md:text-[44px]">
+          A day with room for you.
+        </h2>
+        <p className="max-w-[440px] text-[15px] leading-7 text-muted-foreground">
+          Imagine a day where help is available when you need it, so you can
+          stay safe, confident and connected at home.
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
-        {dayToDayMoments.map((moment) => (
-          <article key={moment.title} className="min-w-0">
-            <div className="overflow-hidden rounded-sm bg-muted">
-              <img
-                src={moment.image}
-                alt={moment.alt}
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-500 hover:scale-[1.025]"
-              />
-            </div>
-            <p className="mt-4 text-[9px] font-semibold uppercase tracking-[0.12em] text-primary">
-              {moment.category}
+      <div className="mt-8 grid gap-5 md:grid-cols-3">
+        {moments.map((m) => (
+          <article key={m.title}>
+            <img
+              src={m.img}
+              alt=""
+              loading="lazy"
+              className="aspect-[4/3] w-full rounded-md object-cover"
+            />
+            <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.06em] text-primary">
+              {m.cat}
             </p>
-            <h3 className="mt-1 text-lg font-medium text-foreground">
-              {moment.title}
-            </h3>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
-              {moment.text}
+            <h3 className="mt-2 text-2xl text-foreground">{m.title}</h3>
+            <p className="mt-2 text-[15px] leading-6 text-muted-foreground">
+              {m.text}
             </p>
           </article>
         ))}
       </div>
+      <p className="mt-10 text-[11px] text-muted-foreground">
+        An imagined day — activities would reflect the person's interests,
+        preferences and abilities.
+      </p>
     </div>
   </section>
 );
 
 export const HomeVisitSection = () => (
-  <section className="animate-section border-b border-border bg-[#eee9df] py-16 md:py-20">
-    <div className="container grid max-w-6xl items-center gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-12">
+  <section className="bg-[#eee6dc] py-24">
+    <div
+      className={`${wrap} grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]`}
+    >
       <div>
-        <p className="section-label">Support that fits your home</p>
-        <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight text-foreground md:text-4xl">
+        <Label>Support that fits your home</Label>
+        <h2 className="mt-4 text-4xl leading-tight text-foreground md:text-[44px]">
           More than a visit. A dependable presence.
         </h2>
-        <p className="mt-4 max-w-md text-xs leading-6 text-muted-foreground md:text-sm">
+        <p className="mt-6 max-w-[440px] text-[15px] leading-7 text-muted-foreground">
           Licensed healthcare aides bring dependable support into the home, so
           you can stay safe, confident and connected to the routines that matter
           most.
         </p>
-        <ul className="mt-5 space-y-2">
+        <ul className="mt-6 space-y-3">
           {[
             "Support tailored to your home",
             "Licensed healthcare aides",
             "Available 24/7",
-          ].map((item) => (
+          ].map((i) => (
             <li
-              key={item}
-              className="flex items-center gap-2 text-[10px] font-medium text-foreground"
+              key={i}
+              className="flex items-center gap-3 text-sm text-foreground"
             >
-              <Leaf size={12} className="text-primary" />
-              {item}
+              <Leaf size={14} strokeWidth={1.4} className="text-primary" />
+              {i}
             </li>
           ))}
         </ul>
       </div>
-      <div className="overflow-hidden rounded-sm">
+      <figure>
         <img
           src="https://images.unsplash.com/photo-1547592180-85f173990554?w=1200&q=85"
-          alt="A nourishing meal prepared and shared at home"
+          alt="A meal shared at home"
           loading="lazy"
-          className="aspect-[4/3] w-full object-cover"
+          className="aspect-[16/10] w-full rounded-md object-cover"
         />
-      </div>
+        <figcaption className="mt-4 text-[11px] text-muted-foreground">
+          Support that respects your home, your routines and your preferences.
+        </figcaption>
+      </figure>
     </div>
   </section>
 );
 
+const chips = [
+  { icon: Armchair, t: "Support tailored to your home" },
+  { icon: TreePine, t: "Licensed healthcare aides" },
+  { icon: BookOpen, t: "CPR certified" },
+  { icon: Accessibility, t: "Police checked" },
+];
+
 export const HomeGallerySection = () => (
-  <section className="animate-section border-b border-border bg-[#f7f5ef] py-16 md:py-20">
-    <div className="container max-w-6xl">
-      <div className="mb-7 grid gap-4 md:grid-cols-2 md:items-end">
-        <div>
-          <p className="section-label">Your independence, supported</p>
-          <h2 className="mt-4 max-w-md text-3xl font-medium leading-tight text-foreground md:text-4xl">
-            Support that respects your home.
-          </h2>
-        </div>
-        <p className="max-w-lg text-xs leading-6 text-muted-foreground md:justify-self-end md:text-sm">
+  <section className="bg-background py-24">
+    <div className={wrap}>
+      <Label>Your independence, supported</Label>
+      <div className="mt-3 grid gap-4 md:grid-cols-2 md:items-end">
+        <h2 className="max-w-[480px] text-4xl leading-tight text-foreground md:text-[44px]">
+          Support that respects your home.
+        </h2>
+        <p className="max-w-[400px] text-[15px] leading-7 text-muted-foreground">
           Dependable support can help you stay safe, confident and connected in
-          the place that feels most like you.
+          the place that feels most like yours.
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="mt-8 grid gap-5 md:grid-cols-[1.45fr_1fr]">
         <figure>
           <img
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1100&q=85"
-            alt="A comfortable, light-filled living room"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=85"
+            alt="A bright, comfortable bedroom"
             loading="lazy"
-            className="aspect-[4/2.5] w-full rounded-sm object-cover"
+            className="h-[330px] w-full rounded-md object-cover md:h-[360px]"
           />
-          <figcaption className="mt-2 text-xs text-foreground">
-            Support that fits your home
+          <figcaption className="mt-3 flex items-baseline justify-between">
+            <span className="font-serif text-2xl text-foreground">
+              Support that fits your home
+            </span>
+            <span className="text-[11px] text-muted-foreground">
+              Concept support
+            </span>
           </figcaption>
         </figure>
         <figure>
           <img
-            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1100&q=85"
-            alt="A welcoming living space with a place to sit and relax"
+            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&q=85"
+            alt="A welcoming living room"
             loading="lazy"
-            className="aspect-[4/2.5] w-full rounded-sm object-cover"
+            className="h-[330px] w-full rounded-md object-cover md:h-[360px]"
           />
-          <figcaption className="mt-2 text-xs text-foreground">
+          <figcaption className="mt-3 font-serif text-2xl text-foreground">
             A familiar place to stay
           </figcaption>
         </figure>
       </div>
-      <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-        {trustPoints.map(({ icon: Icon, text }) => (
+      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {chips.map(({ icon: Icon, t }) => (
           <div
-            key={text}
-            className="flex items-center justify-center gap-2 rounded-sm border border-border/80 bg-background/60 px-3 py-3 text-center text-[9px] font-medium text-foreground"
+            key={t}
+            className="flex items-center justify-center gap-3 rounded-md border border-border py-4 text-xs text-foreground"
           >
-            <Icon size={13} className="shrink-0 text-primary" />
-            {text}
+            <Icon size={14} strokeWidth={1.4} />
+            {t}
           </div>
         ))}
       </div>
@@ -207,89 +194,124 @@ export const HomeGallerySection = () => (
   </section>
 );
 
+const decision = [
+  {
+    t: "Tell us what matters",
+    x: "Talk through daily routines, preferences and the support you're looking for. Bring your questions — and the people you trust.",
+  },
+  {
+    t: "Get a feel for the support",
+    x: "Explore the services, ask about availability and imagine how dependable in-home support could feel.",
+  },
+  {
+    t: "Consider the next chapter",
+    x: "Before making a decision, review care suitability, a written fee breakdown and what settling into support would involve.",
+  },
+];
+
 export const DecisionStepsSection = () => (
-  <section className="animate-section border-b border-border bg-[#edf0e7] py-16 md:py-20">
-    <div className="container grid max-w-6xl gap-8 md:grid-cols-2 md:gap-14">
+  <section className="bg-[#f0f1ea] py-24">
+    <div className={`${wrap} grid gap-12 md:grid-cols-[0.8fr_1.2fr]`}>
       <div>
-        <p className="section-label">For you and your family</p>
-        <h2 className="mt-4 max-w-sm text-3xl font-medium leading-tight text-foreground md:text-4xl">
+        <Label>For you and your family</Label>
+        <h2 className="mt-4 max-w-[340px] text-4xl leading-tight text-foreground md:text-[44px]">
           A big decision. Small, thoughtful steps.
         </h2>
-        <p className="mt-4 max-w-md text-xs leading-6 text-muted-foreground">
+        <p className="mt-6 max-w-[360px] text-[15px] leading-7 text-muted-foreground">
           You don't need to have all the answers. Start with a conversation, and
           take the time you need to explore your options together.
         </p>
         <Link
           to="/contact"
-          className="mt-4 inline-flex items-center gap-1 text-[10px] font-semibold text-primary hover:underline"
+          className="mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-primary underline underline-offset-4"
         >
           Questions to bring to a care conversation <ArrowUpRight size={13} />
         </Link>
       </div>
-      <ol className="divide-y divide-primary/10">
-        {[
-          {
-            title: "Tell us what matters",
-            text: "Talk through daily routines, preferences and the support you're looking for.",
-          },
-          {
-            title: "Get a feel for the support",
-            text: "Explore the services, ask about availability and imagine how dependable in-home support could feel.",
-          },
-          {
-            title: "Consider the next chapter",
-            text: "Before making a decision, review care suitability, a written fee breakdown and what ongoing support would involve.",
-          },
-        ].map((step, index) => (
-          <li key={step.title} className="flex gap-4 py-4 first:pt-0">
-            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e1e8d8] font-serif text-[10px] text-primary">
-              0{index + 1}
+      <div>
+        {decision.map((s, i) => (
+          <div
+            key={s.t}
+            className="flex gap-5 border-b border-primary/15 py-6 first:pt-0"
+          >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e6ebde] font-serif text-sm text-primary">
+              0{i + 1}
             </span>
             <div>
-              <h3 className="text-sm font-medium text-foreground">
-                {step.title}
-              </h3>
-              <p className="mt-1 text-xs leading-5 text-muted-foreground">
-                {step.text}
+              <h3 className="text-2xl text-foreground">{s.t}</h3>
+              <p className="mt-2 text-[15px] leading-6 text-muted-foreground">
+                {s.x}
               </p>
             </div>
-          </li>
+          </div>
         ))}
-      </ol>
+        <p className="mt-6 text-[11px] text-muted-foreground">
+          Your voice matters. So does the voice of the person who will receive
+          the support.
+        </p>
+      </div>
     </div>
   </section>
 );
 
+const faqs = [
+  {
+    q: "How do I know which service is right?",
+    a: "Begin with the person's preferences, everyday routines and current support needs. In a real home-care service, a care discussion and suitability review would help clarify what is offered and whether it is the right fit.",
+  },
+  {
+    q: "What should we ask about fees?",
+    a: "Ask for a written fee breakdown, what is included in each visit and how changes to the schedule would be handled.",
+  },
+  {
+    q: "Are healthcare aides available 24/7?",
+    a: "Care schedules depend on needs and location. In a real service, visit times, overnight care and ongoing support would be discussed individually.",
+  },
+  {
+    q: "What can someone bring from home?",
+    a: "Familiar routines, preferences and personal touches help shape support around the person. Practical details would be discussed together.",
+  },
+];
+
 export const FaqSection = () => (
-  <section className="animate-section border-b border-border bg-[#fffefa] py-16 md:py-20">
-    <div className="container grid max-w-6xl gap-8 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
+  <section className="bg-card py-24">
+    <div className={`${wrap} grid gap-12 md:grid-cols-[0.8fr_1.2fr]`}>
       <div>
-        <p className="section-label">A little clarity</p>
-        <h2 className="mt-4 max-w-sm text-3xl font-medium leading-tight text-foreground md:text-4xl">
-          It’s natural to have questions.
+        <Label>A little clarity</Label>
+        <h2 className="mt-4 max-w-[340px] text-4xl leading-tight text-foreground md:text-[44px]">
+          It's natural to have questions.
         </h2>
-        <p className="mt-4 max-w-sm text-xs leading-6 text-muted-foreground">
+        <p className="mt-6 max-w-[320px] text-[15px] leading-7 text-muted-foreground">
           A few helpful starting points for older adults and their families.
         </p>
         <Link
           to="/contact"
-          className="mt-4 inline-flex items-center gap-1 text-[10px] font-semibold text-primary hover:underline"
+          className="mt-5 inline-flex items-center gap-2 text-[13px] font-medium text-primary underline underline-offset-4"
         >
           Ask us a question <ArrowUpRight size={13} />
         </Link>
       </div>
-      <Accordion type="single" collapsible className="w-full">
-        {questions.map(({ question, answer }, index) => (
-          <AccordionItem
-            key={question}
-            value={`question-${index}`}
-            className="border-primary/10"
-          >
-            <AccordionTrigger className="py-4 text-left text-xs font-medium text-foreground hover:no-underline">
-              {question}
+      <Accordion
+        type="single"
+        collapsible
+        defaultValue="q0"
+        className="w-full border-t border-border"
+      >
+        {faqs.map((f, i) => (
+          <AccordionItem key={f.q} value={`q${i}`} className="border-border">
+            <AccordionTrigger className="group py-5 text-left text-[15px] font-normal text-foreground hover:no-underline [&>svg]:hidden">
+              {f.q}
+              <Plus
+                size={16}
+                className="shrink-0 group-data-[state=open]:hidden"
+              />
+              <Minus
+                size={16}
+                className="hidden shrink-0 group-data-[state=open]:block"
+              />
             </AccordionTrigger>
-            <AccordionContent className="text-xs leading-5 text-muted-foreground">
-              {answer}
+            <AccordionContent className="text-[15px] leading-7 text-muted-foreground">
+              {f.a}
             </AccordionContent>
           </AccordionItem>
         ))}
